@@ -8,8 +8,11 @@
     "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint './src/**/*.{js,jsx}'",
-    "lint-staged": "echo 'Pre-commit!' ",
+    "lint-staged": "lint-staged",
     "prepare": "husky install"
+  },
+  "lint-staged" : {
+    "*.{js,jsx}": "eslint"
   },
   "keywords": [],
   "author": "",
