@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { css } from '@emotion/react';
-import { kanbanCardStyles, kanbanCardTitleStyles } from './App';
+import { kanbanCardStyles, kanbanCardTitleStyles } from './KanbanCard';
 
 export default function KanbanNewCard({ onSubmit }) {
   const [title, setTitle] = useState('');

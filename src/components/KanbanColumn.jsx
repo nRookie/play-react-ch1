@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { css } from '@emotion/react';
+// eslint-disable-next-line import/no-cycle
 import KanbanCard from './KanbanCard';
+// eslint-disable-next-line import/no-cycle
 import KanbanNewCard from './KanbanNewCard';
 
 export default function KanbanColumn({
@@ -98,6 +100,7 @@ export default function KanbanColumn({
             key={props.title}
             onDragStart={() => setDraggedItem && setDraggedItem(props)}
             onRemove={onRemove}
+            // eslint-disable-next-line react/jsx-props-no-spreading
             {...props}
           />
         ))}
