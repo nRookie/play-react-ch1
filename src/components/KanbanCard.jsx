@@ -1,10 +1,13 @@
-import React, {useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { css } from '@emotion/react';
-import { MINUTE, HOUR, DAY, UPDATE_INTERVAL, kanbanCardStyles, kanbanCardTitleStyles } from './App';
+import {
+  MINUTE, HOUR, DAY, UPDATE_INTERVAL, kanbanCardStyles, kanbanCardTitleStyles,
+} from './App';
 import AdminContext from './AdminContext';
 
-export default function KanbanCard({ title, status, onDragStart, onRemove }) {
-
+export default function KanbanCard({
+  title, status, onDragStart, onRemove,
+}) {
   const [displayTime, setDisplayTime] = useState(status);
   useEffect(() => {
     const updateDisplayTime = () => {
@@ -27,7 +30,6 @@ export default function KanbanCard({ title, status, onDragStart, onRemove }) {
     };
   }, [status]);
 
-
   const handleDragStart = (evt) => {
     evt.dataTransfer.effectAllowed = 'move';
     evt.dataTransfer.setData('text/plain', title);
@@ -38,13 +40,17 @@ export default function KanbanCard({ title, status, onDragStart, onRemove }) {
   return (
     <li css={kanbanCardStyles} draggable onDragStart={handleDragStart}>
       <div css={kanbanCardTitleStyles}>{title}</div>
-      <div css={css`
-      `} title={status}>{displayTime} {isAdmin && onRemove && (
-        <button onClick={() => onRemove({title})}>X</button>
-      )}</div>
+      <div
+        css={css`
+      `}
+        title={status}
+      >
+        {displayTime}
+        {' '}
+        {isAdmin && onRemove && (
+        <button onClick={() => onRemove({ title })}>X</button>
+        )}
+      </div>
     </li>
   );
 }
-
-
- 

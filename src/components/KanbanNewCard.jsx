@@ -11,7 +11,7 @@ export default function KanbanNewCard({ onSubmit }) {
     if (evt.key === 'Enter') {
       onSubmit(title);
     }
-    const newCard = {title, status: new Date().toString()};
+    const newCard = { title, status: new Date().toString() };
     onSubmit(newCard);
   };
 
@@ -28,9 +28,15 @@ export default function KanbanNewCard({ onSubmit }) {
         & > input[type="text"] {
           width: 80%;
         }
-      `}>
-        <input type="text" value={title} ref={inputElem}
-          onChange={handleChange} onKeyDown={handleKeyDown} />
+      `}
+      >
+        <input
+          type="text"
+          value={title}
+          ref={inputElem}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
       </div>
     </li>
   );

@@ -1,22 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { css } from '@emotion/react';
 import KanbanCard from './KanbanCard';
 import KanbanNewCard from './KanbanNewCard';
 
-
 export default function KanbanColumn({
   onAdd,
   canAddNew = false,
-  bgColor, 
-  title, 
-  setIsDragSource = () => { }, 
-  setIsDragTarget = () => { }, 
+  bgColor,
+  title,
+  setIsDragSource = () => { },
+  setIsDragTarget = () => { },
   cardList = [],
   onDrop,
   onRemove,
   setDraggedItem,
 }) {
-
   const [showAdd, setShowAdd] = useState(false);
   const handleAdd = (evt) => {
     setShowAdd(true);
@@ -27,7 +25,6 @@ export default function KanbanColumn({
     setShowAdd(false);
   };
 
-
   return (
     <section
       onDragStart={() => setIsDragSource(true)}
@@ -35,21 +32,21 @@ export default function KanbanColumn({
         evt.preventDefault();
         evt.dataTransfer.dropEffect = 'move';
         setIsDragTarget(true);
-      } }
+      }}
       onDragLeave={(evt) => {
         evt.preventDefault();
         evt.dataTransfer.dropEffect = 'none';
         setIsDragTarget(true);
-      } }
+      }}
       onDrop={(evt) => {
         evt.preventDefault();
         onDrop && onDrop(evt);
-      } }
+      }}
       onDragEnd={(evt) => {
         evt.preventDefault();
         setIsDragSource(false);
         setIsDragTarget(false);
-      } }
+      }}
 
       css={css`
       flex: 1 1 ;
@@ -84,7 +81,8 @@ export default function KanbanColumn({
         overflow:auto;
       }
 
-    `}>
+    `}
+    >
       <h2>
         {title}
         {canAddNew && (
@@ -92,7 +90,7 @@ export default function KanbanColumn({
             &#8853; 添加新卡片
           </button>
         )}
-        </h2>
+      </h2>
       <ul>
         {canAddNew && showAdd && <KanbanNewCard onSubmit={handleSubmit} />}
         {cardList.map((props) => (
@@ -101,9 +99,9 @@ export default function KanbanColumn({
             onDragStart={() => setDraggedItem && setDraggedItem(props)}
             onRemove={onRemove}
             {...props}
-            />
+          />
         ))}
-        </ul>
+      </ul>
     </section>
   );
 }
