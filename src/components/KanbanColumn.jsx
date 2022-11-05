@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import KanbanCard from './KanbanCard';
 import KanbanNewCard from './KanbanNewCard';
@@ -16,7 +16,8 @@ export default function KanbanColumn({
   setDraggedItem,
 }) {
   const [showAdd, setShowAdd] = useState(false);
-  const handleAdd = (evt) => {
+
+  const handleAdd = () => {
     setShowAdd(true);
   };
 
@@ -47,7 +48,6 @@ export default function KanbanColumn({
         setIsDragSource(false);
         setIsDragTarget(false);
       }}
-
       css={css`
       flex: 1 1 ;
       display: flex;
@@ -86,7 +86,7 @@ export default function KanbanColumn({
       <h2>
         {title}
         {canAddNew && (
-          <button onClick={handleAdd} disabled={showAdd}>
+          <button onClick={handleAdd} disabled={showAdd} type="button">
             &#8853; 添加新卡片
           </button>
         )}

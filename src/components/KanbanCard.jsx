@@ -48,7 +48,7 @@ export default function KanbanCard({
         {displayTime}
         {' '}
         {isAdmin && onRemove && (
-        <button onClick={() => onRemove({ title })}>X</button>
+        <button type="button" onClick={() => onRemove({ title })}>X</button>
         )}
       </div>
     </li>

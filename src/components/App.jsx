@@ -64,7 +64,9 @@ function App() {
   };
 
   const handleRemove = (column, cardToRemove) => {
-    updaters[column]((currentStat) => currentStat.filter((item) => item.title !== cardToRemove.title));
+    updaters[column]((currentStat) => currentStat.filter(
+      (item) => item.title !== cardToRemove.title,
+    ));
   };
 
   useEffect(() => {
@@ -99,7 +101,7 @@ function App() {
       <header className="App-header">
         <h1>
           我的看板
-          <button onClick={handleSaveAll}>保存所有卡片</button>
+          <button onClick={handleSaveAll} type="button">保存所有卡片</button>
           <label>
             <input type="checkbox" value={isAdmin} onChange={handleToggleAdmin} />
             管理员模式
